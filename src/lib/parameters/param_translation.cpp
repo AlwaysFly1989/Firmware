@@ -41,6 +41,15 @@
 
 bool param_modify_on_import(bson_node_t node)
 {
+	// migrate MPC_XY_VEL_P -> MPC_XY_VEL_P_ACC (2020-04-24). This can be removed after the next release (current release=1.10)
+	// if (node->type == BSON_DOUBLE) {
+	// 	if (strcmp("MPC_XY_VEL_P", node->name) == 0) {
+	// 		strcpy(node->name, "MPC_XY_VEL_P_ACC");
+	// 		node->d = node->d * 20.0;
+	// 		PX4_INFO("param migrating MPC_XY_VEL_P (removed) -> MPC_XY_VEL_P_ACC: new value=%.3f", node->d);
+	// 		return true;
+	// 	}
+	// }
 
 	// migrate MC_DTERM_CUTOFF -> IMU_DGYRO_CUTOFF (2020-03-12). This can be removed after the next release (current release=1.10)
 	if (node->type == BSON_DOUBLE) {
